@@ -38,9 +38,8 @@ export function Hero() {
       <SiteHeader variant="split" />
       <div className="hero-copy">
         <h1>
-          Inspired
-          <br />
-          Living
+          <span>Inspired</span>
+          <span>Living</span>
         </h1>
         <p className="hero-sub">
           Premium row houses in Jalgaon, planned for families who want a private front door, a place
