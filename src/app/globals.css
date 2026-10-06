@@ -73,7 +73,7 @@ h1, h2, h3, p { margin: 0; }
   flex: none;
 }
 
-.logo-mark svg { width: 46px; height: 46px; }
+.logo-mark svg { width: 28px; height: 28px; }
 
 .logo-words {
   display: flex;
@@ -142,7 +142,7 @@ h1, h2, h3, p { margin: 0; }
   grid-column: 1;
   grid-row: 2;
   align-self: center;
-  padding: 12px 16px 18px 34px;
+  padding: 4px 16px 8px 34px;
 }
 
 .split-header .utility {
@@ -196,8 +196,8 @@ h1, h2, h3, p { margin: 0; }
 
 .utility {
   justify-content: space-between;
-  gap: 16px;
-  padding: 16px 56px 12px 22px;
+  gap: 12px;
+  padding: 6px 40px 6px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.28);
 }
 
@@ -216,14 +216,14 @@ h1, h2, h3, p { margin: 0; }
   border: 0;
   color: #fff;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
 }
 
-.call-link svg { width: 16px; height: 16px; }
+.call-link svg { width: 14px; height: 14px; }
 
 .utility-city {
-  font-size: 13px;
+  font-size: 12px;
   opacity: 0.85;
 }
 
@@ -231,7 +231,7 @@ h1, h2, h3, p { margin: 0; }
 
 .nav-right {
   margin-top: 0;
-  padding: 12px 22px 18px;
+  padding: 4px 22px 8px;
 }
 
 .nav-left > a + a::before,
@@ -253,7 +253,9 @@ h1, h2, h3, p { margin: 0; }
 }
 
 .utility .logo-mark {
-  padding-left: 16px;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 12px;
   border-left: 1px solid rgba(255, 255, 255, 0.28);
 }
 
