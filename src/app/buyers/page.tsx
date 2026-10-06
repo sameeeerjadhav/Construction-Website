@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { EnquireButton } from "@/components/EnquireButton";
 import { PageShell } from "@/components/PageShell";
+import { Reveal } from "@/components/Reveal";
 import { buyerSteps } from "@/data/site";
 
 export const metadata: Metadata = { title: "Buyers" };
@@ -22,7 +23,7 @@ export default function BuyersPage() {
               and hear the payment stages in person.
             </p>
           </div>
-          <div className="steps">
+          <Reveal stagger className="steps">
             {buyerSteps.map((step) => (
               <article key={step.n}>
                 <span>{step.n}</span>
@@ -30,10 +31,10 @@ export default function BuyersPage() {
                 <p>{step.text}</p>
               </article>
             ))}
-          </div>
-          <div className="actions">
+          </Reveal>
+          <Reveal className="actions">
             <EnquireButton className="solid-button">Request a call</EnquireButton>
-          </div>
+          </Reveal>
         </div>
       </section>
     </PageShell>

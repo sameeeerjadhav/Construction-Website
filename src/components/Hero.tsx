@@ -46,7 +46,9 @@ export function Hero() {
           Premium row houses in Jalgaon, planned for families who want a private front door, a place
           to park, and a green lane outside.
         </p>
-        <p className="phase">{slide.label}</p>
+        <p className="phase" key={slide.label}>
+          {slide.label}
+        </p>
       </div>
       <div className="dots" role="tablist" aria-label="Choose a row">
         {homes.map((home, index) => (

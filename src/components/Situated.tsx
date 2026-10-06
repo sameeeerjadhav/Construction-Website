@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { Reveal } from "./Reveal";
 
 export function Situated() {
   return (
@@ -13,10 +14,10 @@ export function Situated() {
         className="cover is-on"
       />
       <div className="situated-shade" />
-      <div className="situated-mark">
+      <Reveal className="situated-mark">
         <Logo markOnly />
-      </div>
-      <div className="situated-copy">
+      </Reveal>
+      <Reveal className="situated-copy">
         <p className="eyebrow light">Situated in</p>
         <h2 id="situated-title">Jalgaon</h2>
         <p>
@@ -26,7 +27,7 @@ export function Situated() {
         <Link href="/#location" className="know light">
           Know more about Jalgaon
         </Link>
-      </div>
+      </Reveal>
     </section>
   );
 }

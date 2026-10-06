@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { EnquireButton } from "@/components/EnquireButton";
 import { PageShell } from "@/components/PageShell";
+import { Reveal } from "@/components/Reveal";
 import { homes } from "@/data/site";
 
 export const metadata: Metadata = { title: "Homes" };
@@ -21,7 +22,7 @@ export default function HomesPage() {
             Sizes are layouts to confirm when you visit.
           </p>
           {homes.map((home) => (
-            <article key={home.id} className="home-block" id={home.id}>
+            <Reveal key={home.id} className="home-block" id={home.id}>
               <h2>{home.name}</h2>
               <p className="home-meta">
                 {home.bhk} · {home.size} · {home.label}
@@ -37,7 +38,7 @@ export default function HomesPage() {
                   ))}
                 </ul>
               </div>
-            </article>
+            </Reveal>
           ))}
           <div className="actions">
             <EnquireButton className="solid-button">Enquire about a home</EnquireButton>

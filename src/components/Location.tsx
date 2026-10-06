@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Reveal } from "./Reveal";
 
 const pins = [
   { name: "Jalgaon Airport", distance: "About 7 km", x: 455, y: 86, kind: "plane" },
@@ -33,8 +34,10 @@ export function Location() {
   return (
     <section className="location" id="location" aria-labelledby="location-title">
       <div className="wrap">
-        <h2 id="location-title">Project Location</h2>
-        <div className="location-grid">
+        <Reveal>
+          <h2 id="location-title">Project Location</h2>
+        </Reveal>
+        <Reveal stagger className="location-grid">
           <div className="map-frame">
             <svg viewBox="0 0 900 520" role="img" aria-label="Illustrated map of Jalgaon with approximate distances">
               <rect width="900" height="520" fill="#e3e3e3" />
@@ -57,6 +60,7 @@ export function Location() {
                 fill="none"
                 stroke="#6d63b8"
                 strokeWidth="4"
+                className="map-route"
                 strokeDasharray="1.5 8"
                 strokeLinecap="round"
               />
@@ -99,7 +103,7 @@ export function Location() {
               Know more
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

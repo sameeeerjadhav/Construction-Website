@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { homes, stats } from "@/data/site";
+import { Reveal } from "./Reveal";
 
 export function Overview() {
   const [active, setActive] = useState(0);
@@ -12,16 +13,18 @@ export function Overview() {
   return (
     <section className="overview" id="overview" aria-labelledby="overview-title">
       <div className="wrap">
-        <h2 id="overview-title">An Overview</h2>
-        <div className="stats">
+        <Reveal>
+          <h2 id="overview-title">An Overview</h2>
+        </Reveal>
+        <Reveal stagger className="stats">
           {stats.map((stat) => (
             <article key={stat.title}>
               <h3>{stat.title}</h3>
               <p>{stat.text}</p>
             </article>
           ))}
-        </div>
-        <div className="stage">
+        </Reveal>
+        <Reveal className="stage">
           <div className="stage-photo">
             {homes.map((item, index) => (
               <Image
@@ -34,7 +37,7 @@ export function Overview() {
               />
             ))}
           </div>
-          <aside className="stage-card">
+          <aside className="stage-card" key={home.id}>
             <p>{home.card}</p>
             <Link href="/about" className="know">
               Know more
@@ -53,7 +56,7 @@ export function Overview() {
             </span>
             <span className="sr-only">Show the next row house</span>
           </button>
-        </div>
+        </Reveal>
         <p className="visual-note">
           Visuals show the planned design. Home sizes are layouts to confirm on a visit.
         </p>

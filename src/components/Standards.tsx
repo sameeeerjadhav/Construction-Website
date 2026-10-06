@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { standards } from "@/data/site";
+import { Reveal } from "./Reveal";
 
 const icons = [
   <svg key="design" viewBox="0 0 48 48" aria-hidden="true">
@@ -30,8 +31,10 @@ export function Standards() {
 
   return (
     <section className="standards" id="features" aria-labelledby="standards-title">
-      <h2 id="standards-title">New Standards</h2>
-      <div className="tabs" role="tablist" aria-label="Project features">
+      <Reveal>
+        <h2 id="standards-title">New Standards</h2>
+      </Reveal>
+      <Reveal stagger className="tabs" role="tablist" aria-label="Project features">
         {standards.map((item, index) => (
           <button
             key={item.id}
@@ -50,7 +53,7 @@ export function Standards() {
             </span>
           </button>
         ))}
-      </div>
+      </Reveal>
       <div
         className="standards-photo"
         id="standards-panel"

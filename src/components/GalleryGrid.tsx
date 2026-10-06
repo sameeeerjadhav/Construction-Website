@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { gallery } from "@/data/site";
 import { useBodyLock } from "@/components/enquire";
+import { Reveal } from "@/components/Reveal";
 
 const filters = ["All", "Exteriors", "Interiors"] as const;
 
@@ -43,13 +44,13 @@ export function GalleryGrid() {
           </button>
         ))}
       </div>
-      <div className="gallery-grid">
+      <Reveal stagger className="gallery-grid" key={filter}>
         {items.map((item, index) => (
           <button key={item.src} type="button" onClick={() => setOpen(index)}>
-            <Image src={item.src} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" />
+            <Image src={item.src} alt={item.alt} fill sizes="(max-width: 800px) 100vw, 33vw" className="gallery-photo" />
           </button>
         ))}
-      </div>
+      </Reveal>
       {open !== null ? (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={items[open].alt}>
           <button type="button" onClick={() => setOpen((open - 1 + items.length) % items.length)} aria-label="Previous photo">

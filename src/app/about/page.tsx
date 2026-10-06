@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageShell } from "@/components/PageShell";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = { title: "About Us" };
 
@@ -13,7 +14,7 @@ export default function AboutPage() {
         <h1>About Us</h1>
       </section>
       <section className="page-section">
-        <div className="wrap prose">
+        <Reveal stagger className="wrap prose">
           <p>
             Vaishnavi Constructions builds row houses in Jalgaon. The home sits on the ground, with
             your own front door on the lane, a bay for the scooter or car, and rooms planned for the
@@ -36,7 +37,7 @@ export default function AboutPage() {
             and Mehrun are an easy ride from a home inside the city. The lane is planned to stay quieter
             than the road it connects to.
           </p>
-        </div>
+        </Reveal>
       </section>
     </PageShell>
   );
