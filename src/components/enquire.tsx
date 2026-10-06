@@ -10,6 +10,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import Link from "next/link";
 import { homes } from "@/data/site";
 
 type EnquireContextValue = {
@@ -63,11 +64,10 @@ export function EnquireProvider({ children }: { children: ReactNode }) {
 }
 
 function EnquireRail() {
-  const { openEnquire } = useEnquire();
   return (
-    <button type="button" className="enquire-rail" onClick={openEnquire}>
+    <Link href="/enquire#enquire-sheet" className="enquire-rail">
       Enquire Now
-    </button>
+    </Link>
   );
 }
 
@@ -97,26 +97,20 @@ function ScrollTop() {
   );
 }
 
-function EnquireDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function EnquireForm({
+  variant = "drawer",
+  autoFocus = false,
+}: {
+  variant?: "drawer" | "page";
+  autoFocus?: boolean;
+}) {
   const firstField = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 
-  useBodyLock(open);
-
   useEffect(() => {
-    if (!open) return;
-    const previous = document.activeElement as HTMLElement | null;
-    firstField.current?.focus();
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      previous?.focus();
-    };
-  }, [open, onClose]);
+    if (autoFocus) firstField.current?.focus();
+  }, [autoFocus]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -161,6 +155,78 @@ function EnquireDrawer({ open, onClose }: { open: boolean; onClose: () => void }
     }
   }
 
+  if (status === "sent") {
+    return (
+      <p className="success" role="status">
+        Thank you. Your enquiry is with the Jalgaon desk. Please keep your phone nearby.
+      </p>
+    );
+  }
+
+  const page = variant === "page";
+
+  return (
+    <form className={page ? "enquire-card" : undefined} onSubmit={onSubmit} noValidate>
+      {page ? <h2>Enquire now</h2> : null}
+      <label className="hp" aria-hidden="true">
+        Company
+        <input name="company" tabIndex={-1} autoComplete="off" />
+      </label>
+      <label>
+        {page ? "Full name *" : "Name"}
+        <input ref={firstField} name="name" autoComplete="name" required />
+      </label>
+      <label>
+        {page ? "Phone number *" : "Phone"}
+        <input name="phone" inputMode="tel" autoComplete="tel" required />
+      </label>
+      <label>
+        {page ? "E-mail address" : "Email"} <span>optional</span>
+        <input name="email" type="email" autoComplete="email" />
+      </label>
+      <label>
+        {page ? "Home *" : "Home"}
+        <select name="home" defaultValue="Lane Row · 2 BHK">
+          {homes.map((home) => (
+            <option key={home.id}>
+              {home.short} · {home.bhk}
+            </option>
+          ))}
+          <option>Not sure yet</option>
+        </select>
+      </label>
+      <label>
+        {page ? "Note" : "Note"} <span>optional</span>
+        <textarea name="message" rows={page ? 2 : 3} />
+      </label>
+      {status === "error" ? <p className="form-error">{error}</p> : null}
+      <button
+        type="submit"
+        className={page ? "enquire-submit" : "solid-button"}
+        disabled={status === "sending"}
+      >
+        {status === "sending" ? "Sending…" : page ? "Submit now" : "Request a call"}
+      </button>
+    </form>
+  );
+}
+
+function EnquireDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  useBodyLock(open);
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      previous?.focus();
+    };
+  }, [open, onClose]);
+
   if (!open) return null;
 
   return (
@@ -177,49 +243,7 @@ function EnquireDrawer({ open, onClose }: { open: boolean; onClose: () => void }
         <p className="lede">
           Tell us which row you want to walk through. We will call you back on the number you share.
         </p>
-        {status === "sent" ? (
-          <p className="success" role="status">
-            Thank you. Your enquiry is with the Jalgaon desk. Please keep your phone nearby.
-          </p>
-        ) : (
-          <form onSubmit={onSubmit} noValidate>
-            <label className="hp" aria-hidden="true">
-              Company
-              <input name="company" tabIndex={-1} autoComplete="off" />
-            </label>
-            <label>
-              Name
-              <input ref={firstField} name="name" autoComplete="name" required />
-            </label>
-            <label>
-              Phone
-              <input name="phone" inputMode="tel" autoComplete="tel" required />
-            </label>
-            <label>
-              Email <span>optional</span>
-              <input name="email" type="email" autoComplete="email" />
-            </label>
-            <label>
-              Home
-              <select name="home" defaultValue="Lane Row">
-                {homes.map((home) => (
-                  <option key={home.id}>
-                    {home.short} · {home.bhk}
-                  </option>
-                ))}
-                <option>Not sure yet</option>
-              </select>
-            </label>
-            <label>
-              Note <span>optional</span>
-              <textarea name="message" rows={3} />
-            </label>
-            {status === "error" ? <p className="form-error">{error}</p> : null}
-            <button type="submit" className="solid-button" disabled={status === "sending"}>
-              {status === "sending" ? "Sending…" : "Request a call"}
-            </button>
-          </form>
-        )}
+        <EnquireForm autoFocus />
       </div>
     </div>
   );

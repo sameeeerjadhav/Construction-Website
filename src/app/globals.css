@@ -204,6 +204,15 @@ h1, h2, h3, p { margin: 0; }
 .nav-bar a:hover,
 .nav-bar button:hover { opacity: 0.72; }
 
+.nav-left a.is-current,
+.nav-right a.is-current,
+.nav-bar a.is-current,
+.mobile-nav a.is-current { color: #4eb4e0; }
+
+.nav-left a.is-current:hover,
+.nav-right a.is-current:hover,
+.nav-bar a.is-current:hover { opacity: 1; }
+
 .header-right { min-width: 0; }
 
 .utility {
@@ -840,8 +849,171 @@ h1, h2, h3, p { margin: 0; }
   font-size: 12px;
   font-weight: 600;
   padding: 18px 11px;
+  text-decoration: none;
   cursor: pointer;
 }
+
+.enquire-title {
+  position: absolute;
+  left: 60%;
+  width: 40%;
+  top: 54%;
+  transform: translateY(-50%);
+  z-index: 4;
+  color: #fff;
+  text-align: center;
+  padding: 0 28px;
+}
+
+.enquire-title h1 {
+  font-size: clamp(2.8rem, 4.6vw, 4.4rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.enquire-down {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 22px auto 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.enquire-down svg {
+  width: 28px;
+  height: 22px;
+  margin-top: -8px;
+}
+
+.enquire-down svg:nth-child(2) { opacity: 0.7; }
+.enquire-down svg:nth-child(3) { opacity: 0.4; }
+
+.enquire-sheet {
+  position: relative;
+  background: #ececec;
+  overflow: hidden;
+}
+
+.enquire-sheet .wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 56px;
+  align-items: start;
+}
+
+.enquire-watermark {
+  position: absolute;
+  left: 42%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  width: min(460px, 42vw);
+  color: var(--navy);
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.enquire-watermark .logo-mark,
+.enquire-watermark .logo { display: block; width: 100%; color: inherit; }
+
+.enquire-watermark .logo svg { width: 100%; height: auto; }
+
+.enquire-info h2 {
+  color: var(--navy);
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.enquire-info h3 {
+  margin: 28px 0 10px;
+  color: var(--navy);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.enquire-info p { max-width: 34rem; line-height: 1.65; }
+.enquire-info p + p { margin-top: 16px; }
+
+.enquire-card {
+  padding: 28px 26px 32px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(11, 50, 81, 0.06);
+}
+
+.enquire-card h2 {
+  margin-bottom: 22px;
+  color: var(--navy);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.enquire-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.enquire-card label span {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  opacity: 0.7;
+}
+
+.enquire-card input,
+.enquire-card select,
+.enquire-card textarea {
+  border: 0;
+  border-bottom: 1px solid rgba(11, 50, 81, 0.35);
+  border-radius: 0;
+  background: transparent;
+  padding: 8px 0 10px;
+  color: #1c1c1c;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.enquire-card textarea { resize: vertical; }
+
+.enquire-submit {
+  margin-top: 8px;
+  min-width: 168px;
+  min-height: 46px;
+  padding: 0 18px;
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.enquire-submit:hover { background: var(--blue); color: #fff; }
+.enquire-submit:disabled { opacity: 0.6; cursor: wait; }
 
 .to-top {
   position: fixed;
@@ -1207,6 +1379,17 @@ h1, h2, h3, p { margin: 0; }
   .page-hero-copy h1 { padding: 8px 0 0; }
   .about-lead, .about-points { grid-template-columns: 1fr; }
   .about-photo { min-height: 280px; }
+  .enquire-title {
+    position: relative;
+    left: auto;
+    width: auto;
+    top: auto;
+    transform: none;
+    background: var(--navy);
+    padding: 48px 20px 56px;
+  }
+  .enquire-sheet .wrap { grid-template-columns: 1fr; gap: 32px; }
+  .enquire-watermark { left: 50%; width: min(280px, 70vw); }
   .stage {
     display: flex;
     flex-direction: column;

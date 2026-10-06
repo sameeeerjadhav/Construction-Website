@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { contact, leftNav, rightNav, type NavItem } from "@/data/site";
 import { Logo } from "./Logo";
@@ -20,6 +21,7 @@ function PhoneIcon() {
 }
 
 function NavLinks({ items, onNavigate }: { items: NavItem[]; onNavigate?: () => void }) {
+  const pathname = usePathname();
   const { openEnquire } = useEnquire();
   return (
     <>
@@ -36,7 +38,12 @@ function NavLinks({ items, onNavigate }: { items: NavItem[]; onNavigate?: () => 
             {item.label}
           </button>
         ) : (
-          <Link key={item.label} href={item.href} onClick={onNavigate}>
+          <Link
+            key={item.label}
+            href={item.href}
+            className={pathname === item.href ? "is-current" : undefined}
+            onClick={onNavigate}
+          >
             {item.label}
           </Link>
         ),

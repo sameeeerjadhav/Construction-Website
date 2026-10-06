@@ -21,7 +21,7 @@ export const leftNav: NavItem[] = [
 
 export const rightNav: NavItem[] = [
   { href: "/gallery", label: "Project Gallery" },
-  { href: "/#enquire", label: "Enquire Now", enquire: true },
+  { href: "/enquire", label: "Enquire Now" },
   { href: "/buyers", label: "Buyers" },
 ];
 
