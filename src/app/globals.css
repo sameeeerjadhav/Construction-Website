@@ -139,10 +139,23 @@ h1, h2, h3, p { margin: 0; }
 .split-header .header-right { display: contents; }
 
 .split-header .header-left {
-  grid-column: 1;
+  grid-column: 1 / -1;
   grid-row: 2;
+  position: relative;
   align-self: center;
-  padding: 4px 16px 8px 34px;
+  width: 100%;
+  padding: 4px 28px 8px 34px;
+}
+
+.split-header .nav-cluster,
+.bar-header .nav-bar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 22px;
 }
 
 .split-header .utility {
@@ -283,6 +296,7 @@ h1, h2, h3, p { margin: 0; }
 .bar-header .header-left { padding: 0; flex: 1; align-items: center; height: auto; }
 .bar-header .nav-left { display: none; }
 .bar-header .menu-btn { display: none; }
+.bar-header .nav-bar { gap: 22px; }
 
 .mobile-nav {
   position: fixed;

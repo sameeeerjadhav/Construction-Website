@@ -77,14 +77,16 @@ export function SiteHeader({ variant = "bar" }: { variant?: "split" | "bar" }) {
         <Link href="/" className="logo-link" aria-label="Vaishnavi Constructions home">
           <Logo />
         </Link>
-        <nav className="nav-left" aria-label="Primary">
-          <NavLinks items={leftNav} />
-        </nav>
-        {variant === "split" ? (
-          <nav className="nav-right" aria-label="More">
-            <NavLinks items={rightNav} />
+        <div className="nav-cluster">
+          <nav className="nav-left" aria-label="Primary">
+            <NavLinks items={leftNav} />
           </nav>
-        ) : null}
+          {variant === "split" ? (
+            <nav className="nav-right" aria-label="More">
+              <NavLinks items={rightNav} />
+            </nav>
+          ) : null}
+        </div>
         <button
           type="button"
           className="menu-btn"
