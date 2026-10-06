@@ -989,6 +989,64 @@ h1, h2, h3, p { margin: 0; }
   padding: 36px 48px;
 }
 
+.page-hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 36px 48px;
+}
+
+.page-hero-copy h1 { padding: 8px 0 0; }
+
+.about-lead {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.about-photo {
+  position: relative;
+  min-height: 440px;
+  background: #d7d7d7;
+}
+
+.about-lead .eyebrow { margin-bottom: 12px; color: var(--navy); }
+
+.about-lead h2 {
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  margin-bottom: 16px;
+}
+
+.about-lead p + p { margin-top: 14px; }
+
+.about-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.about-points article {
+  background: #fff;
+  padding: 22px 20px 26px;
+  border-top: 3px solid var(--navy);
+}
+
+.about-points h3 {
+  margin: 0 0 10px;
+  color: var(--navy);
+  font-size: 1.02rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.about-close {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  max-width: 720px;
+}
+
 .page-hero .shade {
   position: absolute;
   inset: 0;
@@ -1145,6 +1203,10 @@ h1, h2, h3, p { margin: 0; }
   .hero-copy h1 span:last-child { margin-left: -0.4em; }
   .wrap { padding: 48px 24px 56px; }
   .page-hero h1 { padding: 28px 24px; }
+  .page-hero-copy { padding: 28px 24px; }
+  .page-hero-copy h1 { padding: 8px 0 0; }
+  .about-lead, .about-points { grid-template-columns: 1fr; }
+  .about-photo { min-height: 280px; }
   .stage {
     display: flex;
     flex-direction: column;
