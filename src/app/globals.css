@@ -703,6 +703,32 @@ h1, h2, h3, p { margin: 0; }
 
 .know.light { color: #fff; }
 
+.situated .know {
+  position: relative;
+  border-bottom: 0;
+  padding: 12px 16px 10px;
+}
+
+.situated .know::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid currentColor;
+  pointer-events: none;
+  clip-path: inset(calc(100% - 2px) 0 0 0);
+  transition: clip-path 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.situated .know:hover,
+.situated .know:focus-visible {
+  letter-spacing: 0.14em;
+}
+
+.situated .know:hover::before,
+.situated .know:focus-visible::before {
+  clip-path: inset(0);
+}
+
 .footer {
   background: var(--navy);
   color: #fff;
