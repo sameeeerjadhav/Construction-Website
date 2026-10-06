@@ -743,11 +743,78 @@ h1, h2, h3, p { margin: 0; }
   text-transform: uppercase;
 }
 
+.footer h2 a {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 2px;
+  transition: background-size 0.45s ease, opacity 0.3s ease;
+}
+
+.footer h2 a:hover,
+.footer h2 a:focus-visible {
+  background-size: 100% 2px;
+}
+
 .footer-place {
+  display: inline-block;
   margin-top: 10px;
+  color: inherit;
   letter-spacing: 0.12em;
   font-size: 15px;
+  text-decoration: none;
   opacity: 0.85;
+  transition: opacity 0.3s ease, letter-spacing 0.35s ease;
+}
+
+.footer-place:hover,
+.footer-place:focus-visible {
+  opacity: 1;
+  letter-spacing: 0.18em;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 22px;
+  max-width: 760px;
+  margin: 28px auto 0;
+}
+
+.footer-link {
+  position: relative;
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.footer-link:hover::after,
+.footer-link:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .footer small {
