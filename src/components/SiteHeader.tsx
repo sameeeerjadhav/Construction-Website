@@ -80,6 +80,11 @@ export function SiteHeader({ variant = "bar" }: { variant?: "split" | "bar" }) {
         <nav className="nav-left" aria-label="Primary">
           <NavLinks items={leftNav} />
         </nav>
+        {variant === "split" ? (
+          <nav className="nav-right" aria-label="More">
+            <NavLinks items={rightNav} />
+          </nav>
+        ) : null}
         <button
           type="button"
           className="menu-btn"
@@ -102,9 +107,6 @@ export function SiteHeader({ variant = "bar" }: { variant?: "split" | "bar" }) {
             </div>
             <Logo markOnly />
           </div>
-          <nav className="nav-right" aria-label="More">
-            <NavLinks items={rightNav} />
-          </nav>
         </div>
       ) : (
         <nav className="nav-bar" aria-label="Primary">

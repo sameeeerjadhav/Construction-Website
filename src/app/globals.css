@@ -150,11 +150,10 @@ h1, h2, h3, p { margin: 0; }
   grid-row: 1;
 }
 
-.split-header .nav-right {
-  grid-column: 2;
-  grid-row: 2;
-  align-self: center;
-}
+.split-header .nav-left,
+.split-header .nav-right { flex: none; }
+
+.split-header .nav-right { padding: 0; }
 
 .nav-left,
 .nav-right,
@@ -990,7 +989,8 @@ h1, h2, h3, p { margin: 0; }
   .header-left { align-items: center; height: auto; width: 100%; grid-column: auto; grid-row: auto; }
   .split-header .header-right,
   .header-right,
-  .nav-left { display: none; }
+  .nav-left,
+  .nav-right { display: none; }
   .menu-btn, .bar-header .menu-btn { display: inline-flex; }
   .bar-header .nav-bar { display: none; }
   .bar-header .header-left { align-items: center; height: auto; }
