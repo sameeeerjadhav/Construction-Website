@@ -118,7 +118,8 @@ h1, h2, h3, p { margin: 0; }
   position: absolute;
   inset: 0 0 auto 0;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: minmax(0, 60%) minmax(0, 40%);
+  grid-template-rows: auto auto;
 }
 
 .utility,
@@ -129,18 +130,30 @@ h1, h2, h3, p { margin: 0; }
 
 .header-left {
   display: flex;
-  align-items: flex-end;
-  gap: 14px;
-  height: 100%;
+  align-items: center;
+  gap: 20px;
   min-width: 0;
-  padding: 16px 12px 14px 34px;
+  padding: 16px 12px 0 34px;
 }
 
-.header-right {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-width: 0;
+.split-header .header-right { display: contents; }
+
+.split-header .header-left {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+  padding: 12px 16px 18px 34px;
+}
+
+.split-header .utility {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.split-header .nav-right {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
 }
 
 .nav-left,
@@ -149,7 +162,7 @@ h1, h2, h3, p { margin: 0; }
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 12px;
+  gap: 22px;
   min-width: 0;
 }
 
@@ -217,8 +230,31 @@ h1, h2, h3, p { margin: 0; }
 .utility a { color: #fff; font-size: 13px; text-decoration: none; }
 
 .nav-right {
-  margin-top: auto;
-  padding: 10px 22px 14px;
+  margin-top: 0;
+  padding: 12px 22px 18px;
+}
+
+.nav-left > a + a::before,
+.nav-left > a + button::before,
+.nav-left > button + a::before,
+.nav-left > button + button::before,
+.nav-right > a::before,
+.nav-right > button::before,
+.nav-bar > a + a::before,
+.nav-bar > a + button::before,
+.nav-bar > button + a::before,
+.nav-bar > button + button::before {
+  content: "·";
+  position: absolute;
+  top: 50%;
+  left: -13px;
+  transform: translateY(-54%);
+  opacity: 0.8;
+}
+
+.utility .logo-mark {
+  padding-left: 16px;
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .menu-btn {
@@ -947,10 +983,12 @@ h1, h2, h3, p { margin: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .actions .solid-button, .actions .line-button { width: auto; }
 
-@media (max-width: 980px) {
+@media (max-width: 1060px) {
   .split-header { display: flex; grid-template-columns: none; }
-  .header-left { align-items: center; height: auto; }
-  .header-right, .nav-left { display: none; }
+  .header-left { align-items: center; height: auto; width: 100%; grid-column: auto; grid-row: auto; }
+  .split-header .header-right,
+  .header-right,
+  .nav-left { display: none; }
   .menu-btn, .bar-header .menu-btn { display: inline-flex; }
   .bar-header .nav-bar { display: none; }
   .bar-header .header-left { align-items: center; height: auto; }
