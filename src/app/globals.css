@@ -385,7 +385,7 @@ h1, h2, h3, p { margin: 0; }
 }
 
 .hero-copy h1 span:last-child {
-  margin-left: -0.42em;
+  margin-left: -0.95em;
 }
 
 .hero-sub {
@@ -1049,6 +1049,7 @@ h1, h2, h3, p { margin: 0; }
   .logo { min-width: 0; }
   .hero-copy { padding: 28px 20px 48px; }
   .hero-copy h1 { font-size: clamp(2.35rem, 11vw, 4rem); }
+  .hero-copy h1 span:last-child { margin-left: -0.4em; }
   .wrap { padding: 48px 24px 56px; }
   .page-hero h1 { padding: 28px 24px; }
   .stage {
