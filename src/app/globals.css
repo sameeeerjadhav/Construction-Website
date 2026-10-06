@@ -141,20 +141,20 @@ h1, h2, h3, p { margin: 0; }
 .split-header .header-left {
   grid-column: 1 / -1;
   grid-row: 2;
-  position: relative;
   align-self: center;
+  justify-content: center;
   width: 100%;
-  padding: 4px 28px 8px 34px;
+  gap: 36px;
+  padding: 6px 40px 10px;
 }
 
 .split-header .nav-cluster,
 .bar-header .nav-bar {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: static;
+  transform: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 22px;
 }
 
@@ -287,13 +287,13 @@ h1, h2, h3, p { margin: 0; }
 .bar-header {
   position: sticky;
   top: 0;
-  justify-content: space-between;
-  gap: 18px;
+  justify-content: center;
+  gap: 28px;
   padding: 16px 28px;
   background: var(--navy);
 }
 
-.bar-header .header-left { padding: 0; flex: 1; align-items: center; height: auto; }
+.bar-header .header-left { padding: 0; flex: none; align-items: center; height: auto; }
 .bar-header .nav-left { display: none; }
 .bar-header .menu-btn { display: none; }
 .bar-header .nav-bar { gap: 22px; }
@@ -385,7 +385,7 @@ h1, h2, h3, p { margin: 0; }
 }
 
 .hero-copy h1 span:last-child {
-  margin-left: -0.95em;
+  margin-left: -1.45em;
 }
 
 .hero-sub {
