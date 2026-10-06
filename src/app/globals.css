@@ -375,10 +375,12 @@ h1, h2, h3, p { margin: 0; }
 
 .hero-copy {
   position: absolute;
-  left: 52%;
+  left: 60%;
+  right: 40px;
   top: 50%;
   transform: translateY(-46%);
-  width: min(640px, 48vw);
+  width: auto;
+  padding-left: 40px;
   z-index: 4;
 }
 
@@ -394,7 +396,7 @@ h1, h2, h3, p { margin: 0; }
 }
 
 .hero-copy h1 span:last-child {
-  margin-left: -1.45em;
+  margin-left: -2.55em;
 }
 
 .hero-sub {
@@ -1337,6 +1339,7 @@ h1, h2, h3, p { margin: 0; }
   .hero-copy {
     position: relative;
     left: auto;
+    right: auto;
     top: auto;
     transform: none;
     width: auto;
